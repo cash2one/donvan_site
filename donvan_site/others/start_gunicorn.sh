@@ -1,2 +1,3 @@
 #!/bin/bash
-gunicorn_django -D -c gunicorn.conf.py
+gunicorn_django -D -c others/gunicorn.conf.py
+
