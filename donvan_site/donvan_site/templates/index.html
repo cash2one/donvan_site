@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if posts %}
+
+    {% for post in posts %}
+        {% if post.visible %}
+            <h5><i class="icon-envelope"></i>&emsp;<a href="/post/{{ post.title }}/">{{ post.title }}</a></h5>
+            <small>{{ post.content|safe|truncatewords_html:10 }}</small>
+            <small>
+                <ul class="inline text-right">
+                    <li>
+                        Posted @
+                        <a href="/date/{{ post.publish_time|date:'Y/m/d' }}/">
+                            {{ post.publish_time }}
+                        </a>
+                    </li>
+                    <li>{{ post.status }}</li>
+                    <li>
+                        {% for tag in post.postTagList %}
+                            <a href="/tag/{{ tag }}/">{{ tag }}</a>
+                            {% if not forloop.last %}
+                                ,
+                            {% endif %}
+                        {% endfor %}
+                    </li>
+                    <li>
+                        <a href="/category/{{ post.category }}/">{{ post.category }}</a>
+                    </li>
+                    <li>{{ post.view_count }} views</li>
+                </ul>
+            </small>
+            <hr/>
+        {% endif %}
+    {% endfor %}
+    <div class="pagination pagination-centered pagination-mini">
+        <ul>
+            {% if posts.has_previous %}
+                <li><a href="?page={{ posts.previous_page_number }}">«</a></li>
+            {% else %}
+                <li class="disabled"><a>«</a></li>
+            {% endif %}
+            {% for number in posts.paginator.page_range %}
+                {% if number == posts.number %}
+                    <li class="disabled"><a>{{ number }}</a></li>
+                {% else %}
+                    <li><a href="?page={{ number }}">{{ number }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if posts.has_next %}
+                <li><a href="?page={{ posts.next_page_number }}">»</a></li>
+            {% else %}
+                <li class="disabled"><a>»</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    {% else %}
+        <p class="text-center text-error">nothing is here.</p>
+    {% endif %}
+{% endblock content %}
