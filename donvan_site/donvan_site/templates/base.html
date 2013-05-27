@@ -72,7 +72,7 @@
 				</div>
 				<div class="span2">
                 {% if isAdminUser %}
-                    <p class="text-info">Hi donvan ^_^</p>
+                    <h6 class="text-info" style="padding-left: 30px;">Hi donvan ^_^</h6>
                 {% endif %}
 					<div data-toggle="collapse" data-target="#admin">
 						<img src="/static/img/sleepy_guy.jpg" alt="my avatar" width="150px" class="img-rounded"/>
@@ -80,7 +80,7 @@
 					<div id="admin" class="collapse">
                         <hr />
                         {% if isAdminUser %}
-                            <ul class="nav">
+                            <ul class="nav" style="padding-left: 50px; padding-right: 50px; margin-bottom: 0px">
                                 <li><a href="/admin/">Admin</a></li>
                                 <li><a href="/admin/logout">logout</a></li>
                             </ul>

@@ -5,7 +5,7 @@
 
     {% for post in posts %}
         {% if post.visible %}
-            <h5><i class="icon-envelope"></i>&emsp;<a href="/post/{{ post.title }}/">{{ post.title }}</a></h5>
+            <h5 style="margin-left: 100px;"><a class="text-info" href="/post/{{ post.title }}/">{{ post.title }}</a></h5>
             <small>{{ post.content|safe|truncatewords_html:10 }}</small>
             <small>
                 <ul class="inline text-right">
